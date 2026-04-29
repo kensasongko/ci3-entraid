@@ -52,4 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Account/login';
 $route['404_override'] = '';
 $route['login'] = 'Account/login';
+$route['auth_azure']          = 'Auth_azure/start';
+$route['auth_azure/callback'] = 'Auth_azure/callback';
+$route['auth_azure/logout']   = 'Auth_azure/logout';
 $route['translate_uri_dashes'] = FALSE;

@@ -1,0 +1,4 @@
+vendor/
+application/config/development/Azure.php
+application/config/production/Azure.php
+application/logs/log-*.php

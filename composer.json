@@ -1,0 +1,12 @@
+{
+    "name": "local/codeigniter3-app",
+    "require": {
+        "thenetworg/oauth2-azure": "^2.2"
+    },
+    "authors": [
+        {
+            "name": "Ken Sasongko",
+            "email": "ken.sasongko@gmail.com"
+        }
+    ]
+}

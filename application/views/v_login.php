@@ -75,6 +75,27 @@
               <h4 class="mb-1 pt-2" style="text-align: center !important;">Welcome to Codeigniter3! 👋</h4>
               <p class="mb-4" style="text-align: center !important;">Please sign-in to your account and start the adventure</p>
 
+              <?php
+                $azureCfg = $this->config->item('azure');
+                $allowLocal = !is_array($azureCfg) || !array_key_exists('allowLocalLogin', $azureCfg)
+                    ? TRUE
+                    : (bool) $azureCfg['allowLocalLogin'];
+                $ssoError = $this->session->flashdata('sso_error');
+              ?>
+
+              <?php if (!empty($ssoError)): ?>
+                <div class="alert alert-danger" role="alert"><?= htmlspecialchars($ssoError, ENT_QUOTES, 'UTF-8') ?></div>
+              <?php endif; ?>
+
+              <div class="mb-3 d-grid">
+                <a href="<?= site_url('auth_azure') ?>" class="btn btn-outline-primary">
+                  <i class="ti ti-brand-windows me-1"></i> Sign in with Microsoft
+                </a>
+              </div>
+
+              <?php if ($allowLocal): ?>
+              <div class="divider my-3"><div class="divider-text">or</div></div>
+
               <form id="formAuthentication" class="mb-3">
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
@@ -110,6 +131,7 @@
                   <button class="btn btn-primary d-grid w-100" id="btlogin" type="submit">Sign in</button>
                 </div>
               </form>
+              <?php endif; ?>
 
             </div>
           </div>
