@@ -55,4 +55,7 @@ $route['login'] = 'Account/login';
 $route['auth_azure']          = 'Auth_azure/start';
 $route['auth_azure/callback'] = 'Auth_azure/callback';
 $route['auth_azure/logout']   = 'Auth_azure/logout';
+$route['auth/azure']          = 'Auth_azure/start';
+$route['auth/azure/callback'] = 'Auth_azure/callback';
+$route['auth/azure/logout']   = 'Auth_azure/logout';
 $route['translate_uri_dashes'] = FALSE;
