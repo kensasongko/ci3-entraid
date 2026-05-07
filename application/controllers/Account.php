@@ -21,8 +21,21 @@ class Account extends CI_Controller {
 
 
 	function logout() {
+		$user = $this->session->userdata('user');
+		$isAzure = is_array($user) && isset($user['auth_source']) && $user['auth_source'] === 'azure';
+
+		$logoutUrl = NULL;
+		if ($isAzure) {
+			try {
+				$this->load->library('azure_auth');
+				$logoutUrl = $this->azure_auth->build_logout_url();
+			} catch (Exception $e) {
+				log_message('error', 'Azure federated logout URL build failed: ' . $e->getMessage());
+			}
+		}
+
 		$this->session->sess_destroy();
-		redirect('');
+		redirect($logoutUrl ?: '');
 	}
 
 
